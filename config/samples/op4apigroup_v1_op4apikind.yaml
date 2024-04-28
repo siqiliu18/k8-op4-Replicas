@@ -1,0 +1,12 @@
+apiVersion: op4apigroup.op4domain/v1
+kind: Op4ApiKind
+metadata:
+  labels:
+    app.kubernetes.io/name: op4apikind
+    app.kubernetes.io/instance: op4apikind-sample
+    app.kubernetes.io/part-of: op4
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: op4
+  name: op4apikind-sample
+spec:
+  # TODO(user): Add fields here

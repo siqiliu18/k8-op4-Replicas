@@ -10,4 +10,14 @@ plugins:
   scorecard.sdk.operatorframework.io/v2: {}
 projectName: op4
 repo: op4repo
+resources:
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: op4domain
+  group: op4apigroup
+  kind: Op4ApiKind
+  path: op4repo/api/v1
+  version: v1
 version: "3"

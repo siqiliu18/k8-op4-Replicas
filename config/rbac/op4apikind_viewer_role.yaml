@@ -1,0 +1,27 @@
+# permissions for end users to view op4apikinds.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: op4apikind-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: op4
+    app.kubernetes.io/part-of: op4
+    app.kubernetes.io/managed-by: kustomize
+  name: op4apikind-viewer-role
+rules:
+- apiGroups:
+  - op4apigroup.op4domain
+  resources:
+  - op4apikinds
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - op4apigroup.op4domain
+  resources:
+  - op4apikinds/status
+  verbs:
+  - get
