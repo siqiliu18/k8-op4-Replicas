@@ -1,8 +1,35 @@
-# op4
-// TODO(user): Add simple overview of use/purpose
+# op4 [resource](https://faun.pub/writing-your-first-kubernetes-operator-8f3df4453234)
+**Note**: The document was posted at 2019, the file structure is very different from current operator-sdk version. I have to make some adjustment to make it work. But still this is a very valuable study resource for operators.
 
 ## Description
-// TODO(user): An in-depth paragraph about your project and overview of use
+### What is this operator doing? 
+* It creates a custom resource replicaset, or in other words, it mocks the logic of built-in replicaset, which determines the amount of running pods by the `replicas` field under spec of the custom resource.
+
+### Steps:
+1. operator-sdk init and create API
+2. go mod edit to version 1.22, and make sure to get the latest k8s.io libs
+```
+go 1.22.0
+
+toolchain go1.22.2
+
+require (
+	github.com/onsi/ginkgo/v2 v2.17.1
+	github.com/onsi/gomega v1.32.0
+	k8s.io/api v0.30.0
+	k8s.io/apimachinery v0.30.0
+	k8s.io/client-go v0.30.0
+	sigs.k8s.io/controller-runtime v0.18.0
+)
+```
+3. Update Dockerfile base image to 1.22, and update the manager yaml file that implements the image to look for local image only.
+4. Update the CRD file and controller file following the resource.
+5. make docker-build, make install
+6. make run
+7. k apply CR yaml file
+8. get pods to see 3 running
+9. k edit CR describe directly to adjust replicas number, save
+10. check running pods again
 
 ## Getting Started
 
