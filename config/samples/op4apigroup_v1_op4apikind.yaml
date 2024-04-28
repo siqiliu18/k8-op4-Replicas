@@ -9,4 +9,4 @@ metadata:
     app.kubernetes.io/created-by: op4
   name: op4apikind-sample
 spec:
-  # TODO(user): Add fields here
+  replicas: 3

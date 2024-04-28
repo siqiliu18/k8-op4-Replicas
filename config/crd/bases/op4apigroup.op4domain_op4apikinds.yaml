@@ -1,0 +1,66 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.13.0
+  name: op4apikinds.op4apigroup.op4domain
+spec:
+  group: op4apigroup.op4domain
+  names:
+    kind: Op4ApiKind
+    listKind: Op4ApiKindList
+    plural: op4apikinds
+    singular: op4apikind
+  scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        description: Op4ApiKind is the Schema for the op4apikinds API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: Op4ApiKindSpec defines the desired state of Op4ApiKind
+            properties:
+              replicas:
+                description: Foo is an example field of Op4ApiKind. Edit op4apikind_types.go
+                  to remove/update
+                format: int32
+                type: integer
+            required:
+            - replicas
+            type: object
+          status:
+            description: Op4ApiKindStatus defines the observed state of Op4ApiKind
+            properties:
+              podNames:
+                items:
+                  type: string
+                type: array
+              replicas:
+                description: 'INSERT ADDITIONAL STATUS FIELD - define observed state
+                  of cluster Important: Run "make" to regenerate code after modifying
+                  this file'
+                format: int32
+                type: integer
+            required:
+            - podNames
+            - replicas
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
